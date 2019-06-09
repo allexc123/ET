@@ -1,0 +1,23 @@
+syntax = "proto3";
+package ETHotfix;
+
+message DrawMsg
+{
+
+}
+
+message DrawResultMsg
+{
+
+	int32 bigIndxe = 1;
+	int32 middleIndex = 2;
+	int32 smallIndex = 3;
+	string rewardIcon = 4;
+
+}
+
+message RewardMsg
+{
+	string phoneNumber = 1;
+}
+

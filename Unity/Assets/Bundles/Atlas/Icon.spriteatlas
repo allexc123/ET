@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Icon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c34d245f0a83447f19209058b27c7500, type: 3}
+    totalSpriteSurfaceArea: 60736
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 3bea3090599de47279c0e53f7b10be26, type: 3}
+  - {fileID: 21300000, guid: fda33ae12ab194c5da35564e9ac6f7ed, type: 3}
+  - {fileID: 21300000, guid: 46843a02590cf4b60a1880481996b710, type: 3}
+  - {fileID: 21300000, guid: a8d41142e7f6290409a39354343c3a9d, type: 3}
+  - {fileID: 21300000, guid: f0439b62408b54c36807285e08ac75a6, type: 3}
+  - {fileID: 21300000, guid: b2543cf5879204e7abc5e7e7d69883ef, type: 3}
+  - {fileID: 21300000, guid: 28cee07628b274a6c9806ca2cf5ae1d6, type: 3}
+  - {fileID: 21300000, guid: 44e928c64a0e44e5289e2d36ed9868e8, type: 3}
+  - {fileID: 21300000, guid: 9feb44b781bcb43c0add96bd355d812b, type: 3}
+  - {fileID: 21300000, guid: 39a1364aa408342cbad5c18a7fc6170a, type: 3}
+  - {fileID: 21300000, guid: bb37cf7a17b01482f8a866ecf060429a, type: 3}
+  - {fileID: 21300000, guid: 25509c9b0c8644cb1a24c2cb70b00dc7, type: 3}
+  - {fileID: 21300000, guid: 6d548d9ead3c84c5087c4be91e8dc055, type: 3}
+  - {fileID: 21300000, guid: 7730a7ee2fdec47feb6cca788a1e487f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - a5
+  - a4
+  - b8
+  - a0
+  - a10
+  - a7
+  - b7
+  - a2
+  - a1
+  - a6
+  - b9
+  - a3
+  - a9
+  - a8
+  m_Tag: Icon
+  m_IsVariant: 0

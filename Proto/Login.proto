@@ -1,0 +1,27 @@
+syntax = "proto3";
+package ETHotfix;
+
+message Login
+{
+	string driveId = 1;
+}
+
+message LoginResult
+{
+	int64 playerId = 1;
+	repeated string bigs = 2;
+	repeated string middles = 3;
+	repeated string smalls = 4;
+
+}
+
+message HeartbeatMsg
+{
+
+}
+
+message HeartbeatResultMsg
+{
+	int64 serverTime = 1;
+}
+
