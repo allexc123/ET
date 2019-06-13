@@ -49,7 +49,7 @@ namespace ETHotfix
                 // 创建一个ETHotfix层的Session, 并且保存到ETHotfix.SessionComponent中
                 SessionComponent.Instance.Session = ComponentFactory.Create<Session, ETModel.Session>(session);
 
-                SessionComponent.Instance.Session.Send(Opcode.Login, new Login() { DriveId = "ddafdaf" });
+                SessionComponent.Instance.Session.Send(Opcode.Login, new Login() { DriveId = "default" });
             }
 
             SessionComponent.Instance.Session.Send(Opcode.S_HEARTBEAT, new HeartbeatMsg() { });
