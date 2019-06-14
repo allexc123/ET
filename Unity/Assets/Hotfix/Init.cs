@@ -43,7 +43,7 @@ namespace ETHotfix
 
                 //Game.EventSystem.Run(EventIdType.InitSceneStart);
                 Game.Scene.GetComponent<UIComponent>().OpenPanelAsync(UIEnum.Disk);
-			}
+            }
 			catch (Exception e)
 			{
 				Log.Error(e);

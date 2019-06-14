@@ -63,8 +63,11 @@ namespace ETHotfix
 
 
             this.tbBig = ComponentFactory.Create<Turntable, GameObject>(this.big);
+            //this.tbBig.Parent = this;
             this.tbMiddle = ComponentFactory.Create<Turntable, GameObject>(this.middle);
+            //this.tbMiddle.Parent = this;
             this.tbSmall = ComponentFactory.Create<Turntable, GameObject>(this.small);
+            //this.tbSmall.Parent = this;
 
         }
 

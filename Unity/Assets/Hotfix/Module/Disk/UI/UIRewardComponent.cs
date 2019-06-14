@@ -51,7 +51,7 @@ namespace ETHotfix
         {
             string phoneNumber = this.phoneNumber.GetComponent<InputField>().text;
             SessionComponent.Instance.Session.Send(Opcode.S_REWARD, new RewardMsg() { PhoneNumber = phoneNumber});
-            Game.Scene.GetComponent<UIComponent>().Remove(UIEnum.Reward);
+            Game.Scene.GetComponent<UIComponent>().Close(UIEnum.Reward);
         }
 
 

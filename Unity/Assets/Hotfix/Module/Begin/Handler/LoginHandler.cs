@@ -29,7 +29,7 @@ namespace ETHotfix
             }
 
             Game.Scene.GetComponent<UIComponent>().OpenPanelAsync(UIEnum.Disk);
-            Game.Scene.GetComponent<UIComponent>().Remove(UIEnum.Begin);
+            Game.Scene.GetComponent<UIComponent>().Close(UIEnum.Begin);
 
         }
 	}

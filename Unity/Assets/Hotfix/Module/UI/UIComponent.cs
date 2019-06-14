@@ -11,7 +11,7 @@ namespace ETHotfix
     {
         public override void Awake(UIComponent self)
         {
-            self.Camera = Component.Global.transform.Find("UICamera").gameObject;
+            //self.Camera = Component.Global.transform.Find("UICamera").gameObject;
             self.Awake();
 
         }
@@ -75,7 +75,7 @@ namespace ETHotfix
             ResourcesComponent resourcesComponent = ETModel.Game.Scene.GetComponent<ResourcesComponent>();
             resourcesComponent.LoadBundle(prefab.StringToAB());
             GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset(prefab.StringToAB(), prefab);
-
+            resourcesComponent.UnloadBundle(prefab.StringToAB());
             GameObject gameObject = UnityEngine.Object.Instantiate(bundleGameObject);
 
             UI ui = ComponentFactory.Create<UI, string, GameObject>(prefab, gameObject, false);
@@ -98,17 +98,17 @@ namespace ETHotfix
         }
 
 
-        public void Add(UI ui)
-        {
-            //ui.GameObject.GetComponent<Canvas>().worldCamera = this.Camera.GetComponent<Camera>();
+        //public void Add(UI ui)
+        //{
+        //    //ui.GameObject.GetComponent<Canvas>().worldCamera = this.Camera.GetComponent<Camera>();
 
-            this.uis.Add(ui.Name, ui);
-            //ui.Parent = this;
+        //    this.uis.Add(ui.Name, ui);
+        //    //ui.Parent = this;
 
-            ui.GameObject.transform.SetParent(this.Root.transform, false);
-        }
+        //    ui.GameObject.transform.SetParent(this.Root.transform, false);
+        //}
 
-        public void Remove(UIEnum panel)
+        public void Close(UIEnum panel)
         {
             PanelType panelType = uiTypes[panel];
             this.Remove(panelType.uiPrefab);
@@ -121,6 +121,7 @@ namespace ETHotfix
             {
                 return;
             }
+            
             this.uis.Remove(name);
             ui.Dispose();
         }
