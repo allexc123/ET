@@ -16,7 +16,7 @@ namespace ETHotfix
         }
     }
     [UIPanel(UIEnum.Disk, "UIDisk")]
-    public class UIDiskComponent : Component
+    public class UIDiskComponent : UIBase
     {
 
         private GameObject big;
@@ -27,6 +27,8 @@ namespace ETHotfix
         private Turntable tbBig;
         private Turntable tbMiddle;
         private Turntable tbSmall;
+
+
 
         public void Awake()
         {

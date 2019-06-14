@@ -64,7 +64,7 @@ namespace ETHotfix
             }
         }
 
-        public void OpenPanelAsync(UIEnum panel)
+        public void OpenPanelAsync(UIEnum panel, Action openFinish = null, object param = null)
         {
             PanelType panelType = uiTypes[panel];
             string prefab = panelType.uiPrefab;
@@ -80,9 +80,20 @@ namespace ETHotfix
 
             UI ui = ComponentFactory.Create<UI, string, GameObject>(prefab, gameObject, false);
 
-            ui.AddComponent(panelType.panelType);
+            UIBase uibase = (UIBase)ui.AddComponent(panelType.panelType);
+            uibase.OnInit(param);
 
-            Add(ui);
+            this.uis.Add(ui.Name, ui);
+            ui.GameObject.transform.SetParent(this.Root.transform, false);
+            uibase.OnShow(param);
+
+
+            //Add(ui);
+
+            if (openFinish != null)
+            {
+                openFinish();
+            }
 
         }
 

@@ -114,6 +114,7 @@
     <Compile Include="Assets\Hotfix\Module\PB\Login.cs" />
     <Compile Include="Assets\Hotfix\Module\UI\IUIFactory.cs" />
     <Compile Include="Assets\Hotfix\Module\UI\UI.cs" />
+    <Compile Include="Assets\Hotfix\Module\UI\UIBase.cs" />
     <Compile Include="Assets\Hotfix\Module\UI\UIComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\UI\UIEnum.cs" />
     <Compile Include="Assets\Hotfix\Module\UI\UIPanelAttribute.cs" />

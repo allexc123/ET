@@ -21,7 +21,7 @@ namespace ETHotfix
         }
     }
 
-    [HideInHierarchy]
+    //[HideInHierarchy]
     public class Turntable : Entity
     {
 
