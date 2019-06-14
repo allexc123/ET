@@ -102,8 +102,10 @@ namespace ETHotfix
         {
 
 
-            SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() {});
-            //SessionComponent.Instance.Session.Send(1, new Login() { DriveId = "ddafdaf" });
+            //SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() {});
+            this.tbBig.begin(1, 1);
+            //this.tbMiddle.begin(2, 1);
+            this.tbSmall.begin(3, 2);
         }
 
         public void Wheel(int bigIndex, int middleIndex, int smallIndex, string rewardIcon){

@@ -31,12 +31,14 @@ namespace ETHotfix
         private readonly Dictionary<UIEnum, PanelType> uiTypes = new Dictionary<UIEnum, PanelType>();
 
         public GameObject Camera;
+        public GameObject Root;
 
         public Dictionary<string, UI> uis = new Dictionary<string, UI>();
 
 
         public void Awake()
         {
+            this.Root = Component.Global.transform.Find("UIRoot").gameObject;
             Load();
         }
 
@@ -87,10 +89,12 @@ namespace ETHotfix
 
         public void Add(UI ui)
         {
-            ui.GameObject.GetComponent<Canvas>().worldCamera = this.Camera.GetComponent<Camera>();
+            //ui.GameObject.GetComponent<Canvas>().worldCamera = this.Camera.GetComponent<Camera>();
 
             this.uis.Add(ui.Name, ui);
-            ui.Parent = this;
+            //ui.Parent = this;
+
+            ui.GameObject.transform.SetParent(this.Root.transform, false);
         }
 
         public void Remove(UIEnum panel)

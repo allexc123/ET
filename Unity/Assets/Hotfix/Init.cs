@@ -42,7 +42,7 @@ namespace ETHotfix
                 Game.Scene.AddComponent<RewardComponet>();
 
                 //Game.EventSystem.Run(EventIdType.InitSceneStart);
-                Game.Scene.GetComponent<UIComponent>().OpenPanelAsync(UIEnum.Begin);
+                Game.Scene.GetComponent<UIComponent>().OpenPanelAsync(UIEnum.Disk);
 			}
 			catch (Exception e)
 			{

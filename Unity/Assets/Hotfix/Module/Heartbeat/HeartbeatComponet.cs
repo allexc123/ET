@@ -43,7 +43,7 @@ namespace ETHotfix
             if (session == null || session.IsDisposed)
             {
                 // 创建一个ETModel层的Session,并且保存到ETModel.SessionComponent中
-                session = ETModel.Game.Scene.GetComponent<NetOuterComponent>().Create("192.168.1.3:10001");
+                session = ETModel.Game.Scene.GetComponent<NetOuterComponent>().Create("192.168.1.79:10001");
                 ETModel.SessionComponent.Instance.Session = session;
 
                 // 创建一个ETHotfix层的Session, 并且保存到ETHotfix.SessionComponent中
