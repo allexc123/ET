@@ -14,24 +14,24 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class UnityEngine_Quaternion_Binding
+    unsafe class ETModel_ETVoid_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(UnityEngine.Quaternion);
-            args = new Type[]{typeof(System.Single), typeof(System.Single), typeof(System.Single)};
-            method = type.GetMethod("Euler", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Euler_0);
+            Type type = typeof(ETModel.ETVoid);
+            args = new Type[]{};
+            method = type.GetMethod("Coroutine", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, Coroutine_0);
 
-            app.RegisterCLRCreateDefaultInstance(type, () => new UnityEngine.Quaternion());
+            app.RegisterCLRCreateDefaultInstance(type, () => new ETModel.ETVoid());
 
 
         }
 
-        static void WriteBackInstance(ILRuntime.Runtime.Enviorment.AppDomain __domain, StackObject* ptr_of_this_method, IList<object> __mStack, ref UnityEngine.Quaternion instance_of_this_method)
+        static void WriteBackInstance(ILRuntime.Runtime.Enviorment.AppDomain __domain, StackObject* ptr_of_this_method, IList<object> __mStack, ref ETModel.ETVoid instance_of_this_method)
         {
             ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
             switch(ptr_of_this_method->ObjectType)
@@ -70,32 +70,30 @@ namespace ILRuntime.Runtime.Generated
                     break;
                  case ObjectTypes.ArrayReference:
                     {
-                        var instance_of_arrayReference = __mStack[ptr_of_this_method->Value] as UnityEngine.Quaternion[];
+                        var instance_of_arrayReference = __mStack[ptr_of_this_method->Value] as ETModel.ETVoid[];
                         instance_of_arrayReference[ptr_of_this_method->ValueLow] = instance_of_this_method;
                     }
                     break;
             }
         }
 
-        static StackObject* Euler_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* Coroutine_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 3);
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Single @z = *(float*)&ptr_of_this_method->Value;
+            ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
+            ETModel.ETVoid instance_of_this_method = (ETModel.ETVoid)typeof(ETModel.ETVoid).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
 
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            System.Single @y = *(float*)&ptr_of_this_method->Value;
+            instance_of_this_method.Coroutine();
 
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
-            System.Single @x = *(float*)&ptr_of_this_method->Value;
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
 
-
-            var result_of_this_method = UnityEngine.Quaternion.Euler(@x, @y, @z);
-
-            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+            __intp.Free(ptr_of_this_method);
+            return __ret;
         }
 
 

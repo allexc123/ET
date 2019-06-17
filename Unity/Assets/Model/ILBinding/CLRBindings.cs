@@ -75,13 +75,19 @@ namespace ILRuntime.Runtime.Generated
             ETModel_GameObjectHelper_Binding.Register(app);
             UnityEngine_TextAsset_Binding.Register(app);
             System_Collections_Generic_List_1_String_Binding.Register(app);
-            UnityEngine_Mathf_Binding.Register(app);
+            UnityEngine_Keyframe_Binding.Register(app);
+            UnityEngine_AnimationCurve_Binding.Register(app);
+            System_Collections_Generic_List_1_AnimationCurve_Binding.Register(app);
+            UnityEngine_Random_Binding.Register(app);
+            ETModel_ETVoid_Binding.Register(app);
+            ETModel_AsyncETVoidMethodBuilder_Binding.Register(app);
             UnityEngine_Vector3_Binding.Register(app);
             UnityEngine_Time_Binding.Register(app);
-            UnityEngine_Quaternion_Binding.Register(app);
+            System_Action_Binding.Register(app);
             UnityEngine_LayerMask_Binding.Register(app);
-            UnityEngine_Vector2_Binding.Register(app);
             UnityEngine_RectTransform_Binding.Register(app);
+            UnityEngine_Vector2_Binding.Register(app);
+            UnityEngine_Mathf_Binding.Register(app);
             UnityEngine_UI_Image_Binding.Register(app);
             UnityEngine_UI_Graphic_Binding.Register(app);
             UnityEngine_UI_InputField_Binding.Register(app);
@@ -107,7 +113,6 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Component_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_Int32_ILTypeInstance_Binding.Register(app);
             ETModel_AssetBundleHelper_Binding.Register(app);
-            UnityEngine_Canvas_Binding.Register(app);
             UnityEngine_U2D_SpriteAtlas_Binding.Register(app);
 
             ILRuntime.CLR.TypeSystem.CLRType __clrType = null;

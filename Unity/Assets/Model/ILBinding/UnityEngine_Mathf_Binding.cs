@@ -23,17 +23,11 @@ namespace ILRuntime.Runtime.Generated
             Type[] args;
             Type type = typeof(UnityEngine.Mathf);
             args = new Type[]{typeof(System.Single)};
-            method = type.GetMethod("Abs", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Abs_0);
-            args = new Type[]{typeof(System.Single), typeof(System.Single), typeof(System.Single)};
-            method = type.GetMethod("Lerp", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Lerp_1);
-            args = new Type[]{typeof(System.Single)};
             method = type.GetMethod("Sin", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Sin_2);
+            app.RegisterCLRMethodRedirection(method, Sin_0);
             args = new Type[]{typeof(System.Single)};
             method = type.GetMethod("Cos", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Cos_3);
+            app.RegisterCLRMethodRedirection(method, Cos_1);
 
             app.RegisterCLRCreateDefaultInstance(type, () => new UnityEngine.Mathf());
 
@@ -86,47 +80,7 @@ namespace ILRuntime.Runtime.Generated
             }
         }
 
-        static StackObject* Abs_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Single @f = *(float*)&ptr_of_this_method->Value;
-
-
-            var result_of_this_method = UnityEngine.Mathf.Abs(@f);
-
-            __ret->ObjectType = ObjectTypes.Float;
-            *(float*)&__ret->Value = result_of_this_method;
-            return __ret + 1;
-        }
-
-        static StackObject* Lerp_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 3);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Single @t = *(float*)&ptr_of_this_method->Value;
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            System.Single @b = *(float*)&ptr_of_this_method->Value;
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
-            System.Single @a = *(float*)&ptr_of_this_method->Value;
-
-
-            var result_of_this_method = UnityEngine.Mathf.Lerp(@a, @b, @t);
-
-            __ret->ObjectType = ObjectTypes.Float;
-            *(float*)&__ret->Value = result_of_this_method;
-            return __ret + 1;
-        }
-
-        static StackObject* Sin_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* Sin_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -143,7 +97,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret + 1;
         }
 
-        static StackObject* Cos_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* Cos_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

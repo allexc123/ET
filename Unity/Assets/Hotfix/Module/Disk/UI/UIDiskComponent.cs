@@ -66,11 +66,11 @@ namespace ETHotfix
 
 
             this.tbBig = ComponentFactory.Create<Turntable, GameObject>(this.big);
-            this.tbBig.Parent = this;
+            //this.tbBig.Parent = this;
             this.tbMiddle = ComponentFactory.Create<Turntable, GameObject>(this.middle);
-            this.tbMiddle.Parent = this;
+            //this.tbMiddle.Parent = this;
             this.tbSmall = ComponentFactory.Create<Turntable, GameObject>(this.small);
-            this.tbSmall.Parent = this;
+            //this.tbSmall.Parent = this;
 
         }
 
@@ -110,10 +110,12 @@ namespace ETHotfix
         {
 
 
-            SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
+            //SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
             //this.tbBig.begin(1, 1);
             //this.tbMiddle.begin(2, 1);
             //this.tbSmall.begin(3, 2);
+
+            this.tbBig.RotateUp(12, 1, false, null);
         }
 
         public void Wheel(int bigIndex, int middleIndex, int smallIndex, string rewardIcon)

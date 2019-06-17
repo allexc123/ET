@@ -1,6 +1,5 @@
 ﻿
 
-using System.Collections;
 using System.Collections.Generic;
 
 using ETModel;
@@ -135,6 +134,8 @@ namespace ETHotfix
 
         //}
 
+        TimerComponent timer1 = ETModel.Game.Scene.GetComponent<TimerComponent>();
+
         public List<AnimationCurve> animationCurves; //动画曲线列表 
 
         private bool spinning;  //是否在旋转中
@@ -167,7 +168,10 @@ namespace ETHotfix
                 ks[2].inTangent = 0;
                 ks[2].outTangent = 0;
                 AnimationCurve animationCurve = new AnimationCurve(ks);
-                animationCurves.Add(animationCurve);
+                animationCurves = new List<AnimationCurve>
+                {
+                    animationCurve
+                };
             }
 
         }
@@ -200,12 +204,13 @@ namespace ETHotfix
                 rotateCommand = false;
 
                 //StartCoroutine(SpinTheWheel(randomTime, maxAngle));
-               
+
+                SpinTheWheel(randomTime, maxAngle).Coroutine();
 
             }
         }
 
-        IEnumerator SpinTheWheel(float time, float maxAngle)
+        private async ETVoid SpinTheWheel(float time, float maxAngle)
         {
             spinning = true;
 
@@ -228,7 +233,11 @@ namespace ETHotfix
                 //得到的angle从0到最大角度逐渐变化 速度可变,让给加到旋转物角度上实现逐渐旋转 速度可变
                 this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * angle + startAngle);
                 timer += Time.deltaTime;
-                yield return 0;
+                //yield return 0;
+
+                await timer1.WaitAsync(10);
+
+
             }
 
             //避免旋转有误，最终确保其在该在的位置
