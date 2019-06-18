@@ -10,8 +10,9 @@ namespace ETHotfix
 	public class DiskConfig: IConfig
 	{
 		public long Id { get; set; }
-		public float acc;
-		public float maxSpeed;
-		public float decRoll;
+		public int spinNum;
+		public int spinTime;
+		public int itemNum;
+		public int cw;
 	}
 }

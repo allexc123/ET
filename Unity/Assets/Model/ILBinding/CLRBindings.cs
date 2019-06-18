@@ -77,12 +77,14 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_List_1_String_Binding.Register(app);
             UnityEngine_Keyframe_Binding.Register(app);
             UnityEngine_AnimationCurve_Binding.Register(app);
-            System_Collections_Generic_List_1_AnimationCurve_Binding.Register(app);
             UnityEngine_Random_Binding.Register(app);
             ETModel_ETVoid_Binding.Register(app);
             ETModel_AsyncETVoidMethodBuilder_Binding.Register(app);
             UnityEngine_Vector3_Binding.Register(app);
             UnityEngine_Time_Binding.Register(app);
+            ETModel_TimerComponent_Binding.Register(app);
+            ETModel_ETTask_Binding.Register(app);
+            ETModel_ETTask_Binding_Awaiter_Binding.Register(app);
             System_Action_Binding.Register(app);
             UnityEngine_LayerMask_Binding.Register(app);
             UnityEngine_RectTransform_Binding.Register(app);

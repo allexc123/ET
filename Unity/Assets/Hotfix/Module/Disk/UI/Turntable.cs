@@ -134,14 +134,15 @@ namespace ETHotfix
 
         //}
 
-        TimerComponent timer1 = ETModel.Game.Scene.GetComponent<TimerComponent>();
 
-        public List<AnimationCurve> animationCurves; //动画曲线列表 
+        public AnimationCurve anim; //动画曲线列表 
 
         private bool spinning;  //是否在旋转中
         private float anglePerItem;  //每个item角度(360/item个数)
-        private int randomTime;  //旋转时间
+       
         private int itemNumber;  //item个数
+        private int spinNum;  //旋转圈数
+        private int spinTime; //旋转的时间
 
         private bool rotateCommand = false; //旋转命令
         private int targetItemIndex; //目标item索引(从0开始)
@@ -155,24 +156,20 @@ namespace ETHotfix
 
             spinning = false;
             //避免没有预设曲线报错(这里建一条先慢再快再慢的动画曲线)
-            if (animationCurves == null)
-            {
-                Keyframe[] ks = new Keyframe[3];
-                ks[0] = new Keyframe(0, 0);
-                ks[0].inTangent = 0;
-                ks[0].outTangent = 0;
-                ks[1] = new Keyframe(0.5f, 0.5f);
-                ks[1].inTangent = 1;
-                ks[1].outTangent = 1;
-                ks[2] = new Keyframe(1, 1);
-                ks[2].inTangent = 0;
-                ks[2].outTangent = 0;
-                AnimationCurve animationCurve = new AnimationCurve(ks);
-                animationCurves = new List<AnimationCurve>
-                {
-                    animationCurve
-                };
-            }
+
+            Keyframe[] ks = new Keyframe[3];
+            ks[0] = new Keyframe(0, 0);
+            ks[0].inTangent = 0;
+            ks[0].outTangent = 0;
+            ks[1] = new Keyframe(0.5f, 0.8f);
+            ks[1].inTangent = 1;
+            ks[1].outTangent = 1;
+            ks[2] = new Keyframe(1, 1);
+            ks[2].inTangent = 0;
+            ks[2].outTangent = 0;
+
+            this.anim = new AnimationCurve(ks);
+
 
         }
 
@@ -183,14 +180,20 @@ namespace ETHotfix
         /// <param name="itemIndex">目标item索引，从0开始</param>
         /// <param name="cw">是否顺时针</param>
         /// <param name="callback">结束回调</param>
-        public void RotateUp(int itemNum, int itemIndex, bool cw, System.Action callback)
+        public void RotateUp(int id, int itemIndex, System.Action callback = null)
         {
-            itemNumber = itemNum;
-            anglePerItem = 360 / itemNumber;
-            targetItemIndex = itemIndex;
-            CW = cw;
-            EndCallBack = callback;
-            rotateCommand = true;
+
+            DiskConfig diskConfig = (DiskConfig)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(DiskConfig), id);
+
+            this.itemNumber = diskConfig.itemNum;
+            this.anglePerItem = 360 / itemNumber;
+            this.CW = diskConfig.cw > 0 ? true : false;
+            this.spinNum = diskConfig.spinNum;
+            this.spinTime = diskConfig.spinTime;
+
+            this.targetItemIndex = itemIndex;
+            this.EndCallBack = callback;
+            this.rotateCommand = true;
         }
 
         public void Update()
@@ -198,14 +201,14 @@ namespace ETHotfix
             if (rotateCommand && !spinning)
             {
 
-                randomTime = Random.Range(6, 8);  //随机获取旋转全角的次数 
-
-                float maxAngle = 360 * randomTime + (targetItemIndex * anglePerItem);  //需要旋转的角度
+                //randomTime = Random.Range(6, 8);  //随机获取旋转全角的次数 
+               
+                float maxAngle = 360 * this.spinNum + (targetItemIndex * anglePerItem);  //需要旋转的角度
                 rotateCommand = false;
 
                 //StartCoroutine(SpinTheWheel(randomTime, maxAngle));
 
-                SpinTheWheel(randomTime, maxAngle).Coroutine();
+                SpinTheWheel(this.spinTime, maxAngle).Coroutine();
 
             }
         }
@@ -219,23 +222,25 @@ namespace ETHotfix
             //减去相对于0位置的偏移角度
             maxAngle = maxAngle - GetFitAngle(startAngle);
             //根据顺时针逆时针不同，不同处理
-            int cw_value = 1;
+            int cw_value = -1;
             if (CW)
             {
-                cw_value = -1;
+                cw_value = 1;
             }
-            int animationCurveNumber = Random.Range(0, animationCurves.Count);  //获取一个随机索引
+            //int animationCurveNumber = Random.Range(0, animationCurves.Count);  //获取一个随机索引
 
             while (timer < time)
             {
                 //计算旋转,动画曲线的Evaluate函数返回了给定时间下曲线上的值：从0到1逐渐变化，速度又每个位置的切线斜率决定。
-                float angle = maxAngle * animationCurves[animationCurveNumber].Evaluate(timer / time);
+               
+                float angle = maxAngle * anim.Evaluate(timer / time);
+                Log.Debug(maxAngle + "--" + anim.Evaluate(timer / time) +   "---" + angle);
                 //得到的angle从0到最大角度逐渐变化 速度可变,让给加到旋转物角度上实现逐渐旋转 速度可变
                 this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * angle + startAngle);
                 timer += Time.deltaTime;
                 //yield return 0;
 
-                await timer1.WaitAsync(10);
+                await ETModel.Game.Scene.GetComponent<TimerComponent>().WaitAsync(20);
 
 
             }

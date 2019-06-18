@@ -111,11 +111,11 @@ namespace ETHotfix
 
 
             //SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
-            //this.tbBig.begin(1, 1);
-            //this.tbMiddle.begin(2, 1);
-            //this.tbSmall.begin(3, 2);
+            this.tbBig.RotateUp(1, 4);
+            this.tbMiddle.RotateUp(2, 3);
+            this.tbSmall.RotateUp(3, 1);
 
-            this.tbBig.RotateUp(12, 1, false, null);
+            
         }
 
         public void Wheel(int bigIndex, int middleIndex, int smallIndex, string rewardIcon)

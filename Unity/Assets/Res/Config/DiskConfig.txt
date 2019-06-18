@@ -1,3 +1,3 @@
-{"Id":1,"acc":100,"maxSpeed":300,"decRoll":3}
-{"Id":2,"acc":100,"maxSpeed":300,"decRoll":3}
-{"Id":3,"acc":100,"maxSpeed":300,"decRoll":3}
+{"Id":1,"spinNum":5,"spinTime":8,"itemNum":12,"cw":0}
+{"Id":2,"spinNum":6,"spinTime":7,"itemNum":12,"cw":1}
+{"Id":3,"spinNum":7,"spinTime":6,"itemNum":12,"cw":0}
