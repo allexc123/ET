@@ -227,6 +227,7 @@ namespace ETHotfix
             {
                 cw_value = 1;
             }
+
             //int animationCurveNumber = Random.Range(0, animationCurves.Count);  //获取一个随机索引
 
             while (timer < time)
@@ -234,9 +235,18 @@ namespace ETHotfix
                 //计算旋转,动画曲线的Evaluate函数返回了给定时间下曲线上的值：从0到1逐渐变化，速度又每个位置的切线斜率决定。
                
                 float angle = maxAngle * anim.Evaluate(timer / time);
-                Log.Debug(maxAngle + "--" + anim.Evaluate(timer / time) +   "---" + angle);
+                //Log.Debug(maxAngle + "--" + anim.Evaluate(timer / time) +   "---" + angle);
                 //得到的angle从0到最大角度逐渐变化 速度可变,让给加到旋转物角度上实现逐渐旋转 速度可变
-                this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * angle + startAngle);
+                if (CW)
+                {
+                    this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * angle + startAngle);
+                }
+                else
+                {
+                    this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * angle - startAngle);
+                }
+
+
                 timer += Time.deltaTime;
                 //yield return 0;
 
@@ -246,7 +256,7 @@ namespace ETHotfix
             }
 
             //避免旋转有误，最终确保其在该在的位置
-            this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * maxAngle + startAngle);
+            //this.GameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, cw_value * maxAngle + startAngle);
             //执行回调 
             if (EndCallBack != null)
             {

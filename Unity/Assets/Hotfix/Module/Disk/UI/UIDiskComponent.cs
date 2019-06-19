@@ -120,6 +120,7 @@ namespace ETHotfix
 
         public void Wheel(int bigIndex, int middleIndex, int smallIndex, string rewardIcon)
         {
+            Log.Debug(bigIndex + " " + middleIndex + " " + smallIndex);
             int count = 0;
 
             this.tbBig.RotateUp(1, bigIndex, ()=>{
