@@ -16,7 +16,7 @@ namespace ETHotfix
         }
     }
     [UIPanel(UIEnum.Reward, "UIReward")]
-    public class UIRewardComponent : Component
+    public class UIRewardComponent : UIBase
     {
 
         private GameObject reward;

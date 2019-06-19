@@ -77,7 +77,6 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_List_1_String_Binding.Register(app);
             UnityEngine_Keyframe_Binding.Register(app);
             UnityEngine_AnimationCurve_Binding.Register(app);
-            UnityEngine_Random_Binding.Register(app);
             ETModel_ETVoid_Binding.Register(app);
             ETModel_AsyncETVoidMethodBuilder_Binding.Register(app);
             UnityEngine_Vector3_Binding.Register(app);

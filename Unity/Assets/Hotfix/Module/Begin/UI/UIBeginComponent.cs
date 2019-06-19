@@ -13,7 +13,7 @@ namespace ETHotfix
         }
     }
     [UIPanel(UIEnum.Begin, "UIBegin")]
-    public class UIBeginComponent : Component
+    public class UIBeginComponent : UIBase
     {
 
         private GameObject begin;

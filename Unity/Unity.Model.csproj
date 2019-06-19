@@ -244,7 +244,6 @@
     <Compile Include="Assets\Model\ILBinding\UnityEngine_LayerMask_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\UnityEngine_Mathf_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\UnityEngine_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Random_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\UnityEngine_RectTransform_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\UnityEngine_TextAsset_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\UnityEngine_Time_Binding.cs" />

@@ -85,7 +85,7 @@ namespace ETHotfix
 
 
             RectTransform rectTrans = go.AddComponent<RectTransform>();
-            rectTrans.SetParent(this.big.transform);
+            //rectTrans.SetParent(this.big.transform);
             rectTrans.anchoredPosition3D = Vector3.zero;
             rectTrans.localScale = Vector3.one;
             rectTrans.anchorMin = new Vector2(0.5f, 0.5f);
@@ -110,24 +110,31 @@ namespace ETHotfix
         {
 
 
-            //SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
-            this.tbBig.RotateUp(1, 4);
-            this.tbMiddle.RotateUp(2, 3);
-            this.tbSmall.RotateUp(3, 1);
+            SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
+            //this.tbBig.RotateUp(1, 4);
+            //this.tbMiddle.RotateUp(2, 3);
+            //this.tbSmall.RotateUp(3, 1);
 
-            
+
         }
 
         public void Wheel(int bigIndex, int middleIndex, int smallIndex, string rewardIcon)
         {
+            int count = 0;
 
-            //this.tbBig.begin(1, bigIndex);
+            this.tbBig.RotateUp(1, bigIndex, ()=>{
+                count++; show(count, rewardIcon);
+            });
+            this.tbMiddle.RotateUp(2, middleIndex, ()=> {
+                count++; show(count, rewardIcon);
+            });
+            this.tbSmall.RotateUp(3, smallIndex, ()=> {
+                count++; show(count, rewardIcon);
+            });
 
-            //this.tbMiddle.begin(2, middleIndex);
+           
 
-            //this.tbSmall.begin(3, smallIndex);
-
-            //Game.Scene.GetComponent<UIComponent>().OpenPanelAsync(UIEnum.Reward);
+           
 
             //UI ui = Game.Scene.GetComponent<UIComponent>().Get(UIEnum.Reward);
             //if (ui != null)
@@ -137,6 +144,17 @@ namespace ETHotfix
             //}
         }
 
+        private void show(int count, string rewardIcon)
+        {
+            if (count >= 3)
+            {
+                Game.Scene.GetComponent<UIComponent>().OpenPanelAsync(UIEnum.Reward, () => {
+                    UI ui = Game.Scene.GetComponent<UIComponent>().Get(UIEnum.Reward);
+                    UIRewardComponent uiRewardComponent = ui.GetComponent<UIRewardComponent>();
+                    uiRewardComponent.SetRewardIcon(rewardIcon);
+                });
+            }
+        }
 
 
 
