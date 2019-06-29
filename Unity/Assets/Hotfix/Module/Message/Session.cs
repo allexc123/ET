@@ -90,19 +90,30 @@ namespace ETHotfix
         {
            
             var tcs = new TaskCompletionSource<T>();
-            this.requestCallback.Add(responseOpCode, (response) =>
+            try
             {
-                try
+                this.requestCallback.Add(responseOpCode,(response)=>
                 {
-                    tcs.SetResult((T)response);
-                }
-                catch (Exception e)
-                {
-                    tcs.SetException(new Exception($"Call Error: {opCode}", e));
+                    try
+                    {
+                        tcs.SetResult((T)response);
+                    }
+                    catch (Exception e)
+                    {
+                        tcs.SetException(new Exception($"Call Error: {opCode}", e));
 
-                }
+                    }
 
-            });
+                });
+                Game.Scene.GetComponent<MessageDispatcherComponent>().RegisterMessageType(responseOpCode, typeof(T));
+            }
+            catch(Exception e)
+            {
+                Log.Error(e);
+            }
+           
+           
+            
             this.Send(opCode, message);
             return tcs.Task;
         }

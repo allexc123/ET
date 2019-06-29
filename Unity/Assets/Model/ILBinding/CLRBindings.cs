@@ -67,9 +67,6 @@ namespace ILRuntime.Runtime.Generated
             ETModel_Entity_Binding.Register(app);
             ETModel_ResourcesComponent_Binding.Register(app);
             Google_Protobuf_Collections_RepeatedField_1_String_Binding.Register(app);
-            ReferenceCollector_Binding.Register(app);
-            UnityEngine_UI_Button_Binding.Register(app);
-            ETModel_ActionHelper_Binding.Register(app);
             ETModel_ConfigAttribute_Binding.Register(app);
             ETModel_AppTypeHelper_Binding.Register(app);
             ETModel_GameObjectHelper_Binding.Register(app);
@@ -85,6 +82,9 @@ namespace ILRuntime.Runtime.Generated
             ETModel_ETTask_Binding.Register(app);
             ETModel_ETTask_Binding_Awaiter_Binding.Register(app);
             System_Action_Binding.Register(app);
+            ReferenceCollector_Binding.Register(app);
+            UnityEngine_UI_Button_Binding.Register(app);
+            ETModel_ActionHelper_Binding.Register(app);
             UnityEngine_LayerMask_Binding.Register(app);
             UnityEngine_RectTransform_Binding.Register(app);
             UnityEngine_Vector2_Binding.Register(app);

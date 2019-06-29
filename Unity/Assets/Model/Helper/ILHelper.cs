@@ -21,7 +21,7 @@ namespace ETModel
 			appdomain.DelegateManager.RegisterMethodDelegate<List<object>>();
 			appdomain.DelegateManager.RegisterMethodDelegate<AChannel, System.Net.Sockets.SocketError>();
 			appdomain.DelegateManager.RegisterMethodDelegate<byte[], int, int>();
-			//appdomain.DelegateManager.RegisterMethodDelegate<IResponse>();
+			appdomain.DelegateManager.RegisterMethodDelegate<object>();
 			appdomain.DelegateManager.RegisterMethodDelegate<Session, object>();
 			appdomain.DelegateManager.RegisterMethodDelegate<Session, int, long, MemoryStream>();
 			appdomain.DelegateManager.RegisterMethodDelegate<Session>();

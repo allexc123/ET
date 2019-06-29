@@ -8,7 +8,8 @@ namespace ETModel
 	{
 		private void Start()
 		{
-			this.StartAsync().Coroutine();
+            
+            this.StartAsync().Coroutine();
 		}
 		
 		private async ETVoid StartAsync()

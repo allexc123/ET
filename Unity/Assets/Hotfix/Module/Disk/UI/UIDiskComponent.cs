@@ -1,12 +1,8 @@
 ﻿
-using System;
-
-using System.Collections;
 using System.Collections.Generic;
 using ETModel;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace ETHotfix
 {
@@ -105,21 +101,16 @@ namespace ETHotfix
 
         }
 
-        private void OnBegin()
+        private async void OnBegin()
         {
-            onBegin();
-        }
-
-        private async void onBegin()
-        {
-
 
             //SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
             //this.tbBig.RotateUp(1, 4);
             //this.tbMiddle.RotateUp(2, 3);
             //this.tbSmall.RotateUp(3, 1);
-            Game.Scene.GetComponent<MessageDispatcherComponent>().RegisterMessageType(Opcode.C_DRAW, typeof(DrawResultMsg));
-            DrawResultMsg message  = await Game.Scene.GetComponent<SessionComponent>().Session.Call<DrawResultMsg>(Opcode.S_DRAW, new DrawMsg() { }, Opcode.C_DRAW);
+
+            this.begin.SetActive(false);
+            DrawResultMsg message = await Game.Scene.GetComponent<SessionComponent>().Session.Call<DrawResultMsg>(Opcode.S_DRAW, new DrawMsg() { }, Opcode.C_DRAW);
             Wheel(message.BigIndxe, message.MiddleIndex, message.SmallIndex, message.RewardIcon);
 
         }
@@ -159,6 +150,8 @@ namespace ETHotfix
                     UI ui = Game.Scene.GetComponent<UIComponent>().Get(UIEnum.Reward);
                     UIRewardComponent uiRewardComponent = ui.GetComponent<UIRewardComponent>();
                     uiRewardComponent.SetRewardIcon(rewardIcon);
+
+                    this.begin.SetActive(true);
                 });
             }
         }
