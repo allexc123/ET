@@ -3,7 +3,7 @@ using ETModel;
 
 namespace ETHotfix
 {
-	[MessageHandler(Opcode.C_DRAW)]
+	//[MessageHandler(Opcode.C_DRAW)]
 	public class RewardHandler : AMHandler<DrawResultMsg>
 	{
         protected override void Run(ETModel.Session session, DrawResultMsg message)

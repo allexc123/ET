@@ -41,7 +41,7 @@ namespace ETHotfix
             this.middle = rc.Get<GameObject>("middle");
             this.small = rc.Get<GameObject>("small");
             this.begin = rc.Get<GameObject>("begin");
-            begin.GetComponent<Button>().onClick.Add(onBegin);
+            begin.GetComponent<Button>().onClick.Add(OnBegin);
 
             DiskComponet diskComponet = Game.Scene.GetComponent<DiskComponet>();
             List<string> bigIcons = diskComponet.GetBigIcons();
@@ -105,16 +105,22 @@ namespace ETHotfix
 
         }
 
+        private void OnBegin()
+        {
+            onBegin();
+        }
 
-        private void onBegin()
+        private async void onBegin()
         {
 
 
-            SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
+            //SessionComponent.Instance.Session.Send(Opcode.S_DRAW, new DrawMsg() { });
             //this.tbBig.RotateUp(1, 4);
             //this.tbMiddle.RotateUp(2, 3);
             //this.tbSmall.RotateUp(3, 1);
-
+            Game.Scene.GetComponent<MessageDispatcherComponent>().RegisterMessageType(Opcode.C_DRAW, typeof(DrawResultMsg));
+            DrawResultMsg message  = await Game.Scene.GetComponent<SessionComponent>().Session.Call<DrawResultMsg>(Opcode.S_DRAW, new DrawMsg() { }, Opcode.C_DRAW);
+            Wheel(message.BigIndxe, message.MiddleIndex, message.SmallIndex, message.RewardIcon);
 
         }
 

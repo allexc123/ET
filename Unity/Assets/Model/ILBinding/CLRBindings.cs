@@ -91,6 +91,9 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Mathf_Binding.Register(app);
             UnityEngine_UI_Image_Binding.Register(app);
             UnityEngine_UI_Graphic_Binding.Register(app);
+            System_Runtime_CompilerServices_AsyncVoidMethodBuilder_Binding.Register(app);
+            System_Threading_Tasks_Task_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.Register(app);
+            System_Runtime_CompilerServices_TaskAwaiter_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.Register(app);
             UnityEngine_UI_InputField_Binding.Register(app);
             ETModel_SessionComponent_Binding.Register(app);
             ETModel_Component_Binding.Register(app);
@@ -103,6 +106,9 @@ namespace ILRuntime.Runtime.Generated
             ETModel_SessionCallbackComponent_Binding.Register(app);
             ETModel_Session_Binding.Register(app);
             ETModel_IMessagePacker_Binding.Register(app);
+            System_Collections_Generic_Dictionary_2_Int32_Action_1_Object_Binding.Register(app);
+            System_Action_1_Object_Binding.Register(app);
+            System_Threading_Tasks_TaskCompletionSource_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.Register(app);
             Google_Protobuf_CodedInputStream_Binding.Register(app);
             Google_Protobuf_MessageParser_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.Register(app);
             Google_Protobuf_ProtoPreconditions_Binding.Register(app);

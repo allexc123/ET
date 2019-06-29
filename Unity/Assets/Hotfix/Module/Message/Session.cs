@@ -30,9 +30,12 @@ namespace ETHotfix
 		public ETModel.Session session;
 
 		public  long Pid { get; set; }
-		
 
-		public override void Dispose()
+        private readonly Dictionary<int, Action<object>> requestCallback = new Dictionary<int, Action<object>>();
+
+
+
+        public override void Dispose()
 		{
 			if (this.IsDisposed)
 			{
@@ -51,6 +54,14 @@ namespace ETHotfix
             object instance = Game.Scene.GetComponent<MessageDispatcherComponent>().GetInstance(opcode);
             object message = this.session.Network.MessagePacker.DeserializeFrom(instance, memoryStream);
 
+            
+            Action<object> action;
+            if (this.requestCallback.TryGetValue(opcode, out action))
+            {
+                
+                this.requestCallback.Remove(opcode);
+                action(message);
+            }
             Game.Scene.GetComponent<MessageDispatcherComponent>().Handle(session,opcode, message);
 
             //OpcodeTypeComponent opcodeTypeComponent = Game.Scene.GetComponent<OpcodeTypeComponent>();
@@ -75,5 +86,25 @@ namespace ETHotfix
 			this.session.Send(opcode, pid, message);
 		}
 
+        public Task<T> Call<T>(int opCode, object message, int responseOpCode)
+        {
+           
+            var tcs = new TaskCompletionSource<T>();
+            this.requestCallback.Add(responseOpCode, (response) =>
+            {
+                try
+                {
+                    tcs.SetResult((T)response);
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(new Exception($"Call Error: {opCode}", e));
+
+                }
+
+            });
+            this.Send(opCode, message);
+            return tcs.Task;
+        }
 	}
 }

@@ -86,8 +86,17 @@ namespace ETHotfix
 				//}
 			}
 		}
+        public void RegisterMessageType(int opcode, Type messageType)
+        {
+            if (this.typeMessages.ContainsKey(opcode))
+            {
+                return;
+            }
+            this.typeMessages.Add(opcode, Activator.CreateInstance(messageType));
+        }
 
-		public void RegisterHandler(int opcode, IMHandler handler)
+
+        public void RegisterHandler(int opcode, IMHandler handler)
 		{
 			if (!this.handlers.ContainsKey(opcode))
 			{
@@ -101,7 +110,7 @@ namespace ETHotfix
 			List<IMHandler> actions;
 			if (!this.handlers.TryGetValue(opcode, out actions))
 			{
-				Log.Error($"消息 {message.GetType().FullName} 没有处理");
+				//Log.Error($"消息 {message.GetType().FullName} 没有处理");
 				return;
 			}
 			
